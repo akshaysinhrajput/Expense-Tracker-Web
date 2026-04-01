@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- NAYA -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — ExpenseTrack</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div id="sidebarContainer"></div>
+
+    <!-- ===== PAGE WRAPPER ===== -->
+    <div class="page-wrapper">
+
+        <!-- ===== TOPBAR ===== -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="topbar-btn" onclick="toggleSidebar()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+                <h1 class="topbar-title">Dashboard</h1>
+            </div>
+            <div class="topbar-right">
+                <!-- Notification Bell -->
+                <button class="topbar-btn" onclick="location.href='/pages/notifications.html'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                    </svg>
+                    <span class="topbar-notif-dot" id="notifDot" style="display:none"></span>
+                </button>
+                <!-- Theme Toggle -->
+                <button class="topbar-btn" id="themeToggle" onclick="toggleTheme()"></button>
+            </div>
+        </header>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <main class="main-content">
+
+            <!-- Welcome -->
+            <div class="welcome-row">
+                <div>
+                    <h2 class="welcome-title">Good day, <span id="welcomeName">User</span> 👋</h2>
+                    <p class="welcome-sub">Here's your financial overview</p>
+                </div>
+                <div class="welcome-date" id="currentDate"></div>
+            </div>
+
+            <!-- ===== SUMMARY CARDS ===== -->
+            <section class="summary-cards">
+
+                <div class="summary-card balance">
+                    <div class="summary-card-icon">
+                        <i data-lucide="wallet"></i>
+                    </div>
+                    <div class="summary-card-info">
+                        <p class="card-title">Total Balance</p>
+                        <h3 class="card-value" id="totalBalance">₹ 0</h3>
+                    </div>
+                </div>
+
+                <div class="summary-card income">
+                    <div class="summary-card-icon">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <div class="summary-card-info">
+                        <p class="card-title">Total Income</p>
+                        <h3 class="card-value text-green" id="totalIncome">₹ 0</h3>
+                    </div>
+                </div>
+
+                <div class="summary-card expense">
+                    <div class="summary-card-icon">
+                        <i data-lucide="trending-down"></i>
+                    </div>
+                    
+                    <div class="summary-card-info">
+                        <p class="card-title">Total Expense</p>
+                        <h3 class="card-value text-red" id="totalExpense">₹ 0</h3>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ===== CHART + RECENT ===== -->
+            <div class="dashboard-grid">
+
+                <!-- Chart -->
+                <div class="card chart-card">
+                    <div class="section-header">
+                        <h3 class="section-title">Monthly Overview</h3>
+                        <select id="chartYear" class="chart-year-select" onchange="loadChart()">
+                        </select>
+                    </div>
+                    <canvas id="monthlyChart"></canvas>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card quick-actions-card">
+                    <h3 class="section-title mb-md">Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" onclick="location.href='/pages/add-income.html'">
+                            <i data-lucide="trending-up"></i>
+                            <span>Add Income</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="location.href='/pages/add-expense.html'">
+                            <i data-lucide="trending-down"></i>
+                            <span>Add Expense</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="location.href='/pages/transactions.html'">
+                            <i data-lucide="list"></i>
+                            <span>Transactions</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="location.href='/pages/reports.html'">
+                            <i data-lucide="bar-chart-2"></i>
+                            <span>Reports</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="location.href='/pages/budget.html'">
+                            <i data-lucide="target"></i>
+                            <span>Budget</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="location.href='/pages/notifications.html'">
+                            <i data-lucide="bell"></i>
+                            <span>Notifications</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ===== RECENT TRANSACTIONS ===== -->
+            <div class="card mt-lg">
+                <div class="section-header">
+                    <h3 class="section-title">Recent Transactions</h3>
+                    <button class="btn btn-secondary btn-sm" onclick="location.href='/pages/transactions.html'">
+                        View All
+                    </button>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Category</th>
+                                <th>Account</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentTransactions">
+                            <tr>
+                                <td colspan="5">
+                                    <div class="empty-state">
+                                        <p>No transactions yet</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-items">
+            <a href="/pages/dashboard.html" class="bottom-nav-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7" />
+                    <rect x="14" y="3" width="7" height="7" />
+                    <rect x="14" y="14" width="7" height="7" />
+                    <rect x="3" y="14" width="7" height="7" />
+                </svg>
+                Home
+            </a>
+            <a href="/pages/transactions.html" class="bottom-nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="8" y1="6" x2="21" y2="6" />
+                    <line x1="8" y1="12" x2="21" y2="12" />
+                    <line x1="8" y1="18" x2="21" y2="18" />
+                    <line x1="3" y1="6" x2="3.01" y2="6" />
+                    <line x1="3" y1="12" x2="3.01" y2="12" />
+                    <line x1="3" y1="18" x2="3.01" y2="18" />
+                </svg>
+                Transactions
+            </a>
+            <a href="/pages/add-income.html" class="bottom-nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="16" />
+                    <line x1="8" y1="12" x2="16" y2="12" />
+                </svg>
+                Add
+            </a>
+            <a href="/pages/reports.html" class="bottom-nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10" />
+                    <line x1="12" y1="20" x2="12" y2="4" />
+                    <line x1="6" y1="20" x2="6" y2="14" />
+                    <line x1="2" y1="20" x2="22" y2="20" />
+                </svg>
+                Reports
+            </a>
+            <a href="/pages/profile.html" class="bottom-nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                </svg>
+                Profile
+            </a>
+        </div>
+    </nav>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/supabase.js"></script>
+    <script src="/js/theme.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/sidebar.js"></script>
+    <script src="/js/dashboard.js"></script>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>
