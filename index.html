@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpenseTrack — Smart Expense Tracker</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/components.css"> <!-- YE ADD KARO -->
+    <link rel="stylesheet" href="/css/landing.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <!-- NAYA -->
+            <div class="nav-logo">
+                <i data-lucide="wallet" style="width:20px;height:20px;color:white;"></i>
+            </div>
+            <span>Expense<span class="text-green">Track</span></span>
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it works</a>
+        </div>
+        <div class="nav-actions">
+            <button class="btn btn-outline btn-sm" onclick="location.href='/pages/login.html'">Login</button>
+            <button class="btn btn-primary btn-sm" onclick="location.href='/pages/signup.html'">Get Started</button>
+        </div>
+        <!-- Mobile menu btn -->
+        <button class="nav-mobile-btn" onclick="toggleMobileMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#features" onclick="toggleMobileMenu()">Features</a>
+        <a href="#how-it-works" onclick="toggleMobileMenu()">How it works</a>
+        <button class="btn btn-outline btn-full" onclick="location.href='/pages/login.html'">Login</button>
+        <button class="btn btn-primary btn-full" onclick="location.href='/pages/signup.html'">Get Started</button>
+    </div>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">✨ Smart Financial Tracking</div>
+            <h1 class="hero-title">
+                Take Control of Your
+                <span class="text-green">Finances</span>
+            </h1>
+            <p class="hero-subtitle">
+                Track your income, expenses and budgets all in one place.
+                Get bank statement style reports and never miss a recurring payment again.
+            </p>
+            <div class="hero-actions">
+                <button class="btn btn-primary btn-lg" onclick="location.href='/pages/signup.html'">
+                    Start for Free
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </button>
+                <button class="btn btn-secondary btn-lg" onclick="location.href='/pages/login.html'">
+                    Login
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value">100%</span>
+                    <span class="stat-label">Free to use</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value">Secure</span>
+                    <span class="stat-label">Powered by Supabase</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value">Dark & Light</span>
+                    <span class="stat-label">Theme support</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Visual -->
+        <div class="hero-visual">
+            <div class="hero-card">
+                <div class="hero-card-header">
+                    <span>Total Balance</span>
+                    <span class="text-green">▲ 12%</span>
+                </div>
+                <div class="hero-card-amount">₹ 42,500</div>
+                <div class="hero-card-row">
+                    <div>
+                        <p class="text-muted font-xs">Income</p>
+                        <p class="text-green fw-600">+ ₹ 55,000</p>
+                    </div>
+                    <div>
+                        <p class="text-muted font-xs">Expense</p>
+                        <p class="text-red fw-600">- ₹ 12,500</p>
+                    </div>
+                </div>
+                <!-- Mini Chart Bars -->
+                <div class="mini-chart">
+                    <div class="mini-bar" style="height: 40%"></div>
+                    <div class="mini-bar" style="height: 65%"></div>
+                    <div class="mini-bar" style="height: 50%"></div>
+                    <div class="mini-bar" style="height: 80%"></div>
+                    <div class="mini-bar active" style="height: 95%"></div>
+                    <div class="mini-bar" style="height: 70%"></div>
+                    <div class="mini-bar" style="height: 60%"></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ===== FEATURES SECTION ===== -->
+    <section class="features" id="features">
+        <div class="section-tag">Features</div>
+        <h2 class="section-heading">Everything you need to manage money</h2>
+        <p class="section-subheading">Powerful features designed for real world use</p>
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="trending-up"></i></div>
+                <h3>Income Tracking</h3>
+                <p>Track income with month-wise categorization. Know exactly which month your money belongs to.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="credit-card"></i></div>
+                <h3>Expense Tracking</h3>
+                <p>Record daily expenses with categories, accounts and attachments for complete records.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="bar-chart-2"></i></div>
+                <h3>Bank Style Reports</h3>
+                <p>Get professional bank statement style reports with running balance for any month.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="target"></i></div>
+                <h3>Budget Management</h3>
+                <p>Set monthly budgets per category and get warnings before you overspend.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="bell"></i></div>
+                <h3>Smart Notifications</h3>
+                <p>Never miss a recurring payment. Get reminders for rent, bills and subscriptions every month.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="moon"></i></div>
+                <h3>Dark & Light Mode</h3>
+                <p>Easy on the eyes with beautiful dark and light themes. Switch anytime you want.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-tag">How it works</div>
+        <h2 class="section-heading">Get started in 3 simple steps</h2>
+
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3>Create Account</h3>
+                <p>Sign up for free in seconds. No credit card required.</p>
+            </div>
+
+            <div class="step-arrow">→</div>
+
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3>Add Transactions</h3>
+                <p>Add your income and expenses with categories and details.</p>
+            </div>
+
+            <div class="step-arrow">→</div>
+
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3>Track & Analyse</h3>
+                <p>View reports, manage budgets and stay on top of your finances.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="cta">
+        <h2>Ready to take control of your finances?</h2>
+        <p>Join thousands of users managing their money smartly.</p>
+        <button class="btn btn-primary btn-lg" onclick="location.href='/pages/signup.html'">
+            Get Started for Free
+        </button>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-brand">
+            <!-- NAYA -->
+            <div class="nav-logo">
+                <i data-lucide="wallet" style="width:20px;height:20px;color:white;"></i>
+            </div>
+            <span>Expense<span class="text-green">Track</span></span>
+        </div>
+        <p class="text-muted font-sm">© 2026 ExpenseTrack. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="/js/supabase.js"></script>
+    <script src="/js/theme.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('show');
+        }
+    </script>
+    <script>
+        lucide.createIcons();
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('show');
+        }
+    </script>
+</body>
+
+</html>
