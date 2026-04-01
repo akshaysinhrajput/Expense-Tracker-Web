@@ -1,0 +1,80 @@
+:root {
+    /* ===== PRIMARY COLORS ===== */
+    --primary: #00C896;
+    --primary-dark: #00A37A;
+    --primary-light: #00C89620;
+
+    /* ===== DARK THEME (Default) ===== */
+    --bg-primary: #0F1117;
+    --bg-secondary: #1A1D27;
+    --bg-tertiary: #222635;
+    --border-color: #2A2D3E;
+
+    /* ===== TEXT ===== */
+    --text-primary: #FFFFFF;
+    --text-secondary: #A0A3B1;
+    --text-muted: #6B6F80;
+
+    /* ===== STATUS COLORS ===== */
+    --income-color: #00C896;
+    --expense-color: #FF5B5B;
+    --warning-color: #FFB800;
+    --info-color: #4D9EFF;
+
+    /* ===== CARDS & SHADOWS ===== */
+    --card-bg: #1A1D27;
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --card-border: 1px solid #2A2D3E;
+
+    /* ===== SIDEBAR ===== */
+    --sidebar-width: 260px;
+    --sidebar-bg: #13151F;
+
+    /* ===== TOPBAR ===== */
+    --topbar-height: 65px;
+    --topbar-bg: #1A1D27;
+
+    /* ===== BORDER RADIUS ===== */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 50px;
+
+    /* ===== FONT ===== */
+    --font: 'Inter', sans-serif;
+    --font-xs: 12px;
+    --font-sm: 14px;
+    --font-md: 16px;
+    --font-lg: 20px;
+    --font-xl: 24px;
+    --font-2xl: 32px;
+
+    /* ===== TRANSITIONS ===== */
+    --transition: all 0.3s ease;
+    --transition-fast: all 0.15s ease;
+
+    /* ===== Z-INDEX ===== */
+    --z-sidebar: 100;
+    --z-topbar: 99;
+    --z-modal: 200;
+    --z-toast: 300;
+}
+
+/* ===== LIGHT THEME ===== */
+[data-theme="light"] {
+    --bg-primary: #F5F7FA;
+    --bg-secondary: #FFFFFF;
+    --bg-tertiary: #EEF0F5;
+    --border-color: #E0E3ED;
+
+    --text-primary: #1A1D27;
+    --text-secondary: #5A5E72;
+    --text-muted: #9396A5;
+
+    --card-bg: #FFFFFF;
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --card-border: 1px solid #E0E3ED;
+
+    --sidebar-bg: #FFFFFF;
+    --topbar-bg: #FFFFFF;
+}

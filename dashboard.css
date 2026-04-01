@@ -1,0 +1,234 @@
+@import 'variables.css';
+
+/* ===== WELCOME ROW ===== */
+.welcome-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.welcome-title {
+    font-size: var(--font-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.welcome-sub {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+}
+
+.welcome-date {
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+}
+
+/* ===== SUMMARY CARDS ===== */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.summary-card {
+    background: var(--card-bg);
+    border: var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: var(--transition);
+    box-shadow: var(--card-shadow);
+}
+
+.summary-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.summary-card.balance {
+    border-left: 3px solid var(--info-color);
+}
+
+.summary-card.income {
+    border-left: 3px solid var(--income-color);
+}
+
+.summary-card.expense {
+    border-left: 3px solid var(--expense-color);
+}
+
+.summary-card-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.summary-card-info {
+    flex: 1;
+}
+
+.summary-card-info .card-title {
+    font-size: var(--font-xs);
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.summary-card-info .card-value {
+    font-size: var(--font-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* ===== DASHBOARD GRID ===== */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 20px;
+    margin-bottom: 0;
+
+}
+
+/* ===== CHART CARD ===== */
+.chart-card {
+    min-height: 320px;
+}
+
+.chart-year-select {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 6px 12px;
+    font-size: var(--font-xs);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-family: var(--font);
+}
+
+/* ===== QUICK ACTIONS ===== */
+.quick-actions-card {
+    min-height: 320px;
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.quick-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 12px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    font-size: var(--font-xs);
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-family: var(--font);
+}
+
+.quick-action-btn span:first-child {
+    font-size: 22px;
+}
+
+.quick-action-btn:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* ===== RECENT TRANSACTIONS ===== */
+.amount-credit {
+    color: var(--income-color);
+    font-weight: 600;
+}
+
+.amount-debit {
+    color: var(--expense-color);
+    font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .summary-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .welcome-title {
+        font-size: var(--font-lg);
+    }
+
+    .summary-card-info .card-value {
+        font-size: var(--font-lg);
+    }
+
+    .quick-actions {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+
+
+.summary-card-icon i {
+    width: 24px;
+    height: 24px;
+    color: var(--primary);
+}
+
+.summary-card.income .summary-card-icon i {
+    color: var(--income-color);
+}
+
+.summary-card.expense .summary-card-icon i {
+    color: var(--expense-color);
+}
+
+.quick-action-btn i {
+    width: 24px;
+    height: 24px;
+    color: var(--text-secondary);
+}
+
+.quick-action-btn:hover i {
+    color: var(--primary);
+}

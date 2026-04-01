@@ -1,0 +1,113 @@
+@import 'variables.css';
+
+/* ===== FORM PAGE WRAPPER ===== */
+.form-page-wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+/* ===== FORM CARD ===== */
+.form-card {
+    background: var(--card-bg);
+    border: var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--card-shadow);
+}
+
+/* ===== FORM CARD HEADER ===== */
+.form-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.income-icon {
+    background: rgba(0, 200, 150, 0.15);
+}
+
+.expense-icon {
+    background: rgba(255, 91, 91, 0.15);
+}
+
+.form-card-title {
+    font-size: var(--font-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.form-card-sub {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+}
+
+/* ===== FORM ROW ===== */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* ===== REQUIRED / OPTIONAL ===== */
+.required {
+    color: var(--expense-color);
+    margin-left: 2px;
+}
+
+.optional {
+    color: var(--text-muted);
+    font-size: var(--font-xs);
+    font-weight: 400;
+}
+
+/* ===== INPUT PREFIX (₹) ===== */
+.input-prefix {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.prefix {
+    position: absolute;
+    left: 14px;
+    font-size: var(--font-md);
+    font-weight: 600;
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+.prefix-input {
+    padding-left: 32px !important;
+}
+
+/* ===== FILE NAME ===== */
+#fileName {
+    font-size: var(--font-sm);
+    color: var(--text-muted);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .form-card {
+        padding: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
