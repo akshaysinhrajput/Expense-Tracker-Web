@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Transactions — ExpenseTrack</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/transactions.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div id="sidebarContainer"></div>
+
+    <div class="page-wrapper">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="topbar-btn" onclick="toggleSidebar()">
+                    <i data-lucide="menu"></i>
+                </button>
+                <h1 class="topbar-title">Transactions</h1>
+            </div>
+            <div class="topbar-right">
+                <button class="topbar-btn" onclick="exportCSV()">
+                    <i data-lucide="download"></i>
+                </button>
+                <button class="topbar-btn" id="themeToggle" onclick="toggleTheme()"></button>
+            </div>
+        </header>
+
+        <main class="main-content">
+
+            <!-- FILTERS -->
+            <div class="card filters-card">
+                <div class="filters-row">
+
+                    <!-- Search -->
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="searchInput" placeholder="Search transactions..." oninput="filterTransactions()">
+                    </div>
+
+                    <!-- Type Filter -->
+                    <select id="typeFilter" class="filter-select" onchange="filterTransactions()">
+                        <option value="">All Types</option>
+                        <option value="Income">Income</option>
+                        <option value="Expense">Expense</option>
+                    </select>
+
+                    <!-- Category Filter -->
+                    <select id="categoryFilter" class="filter-select" onchange="filterTransactions()">
+                        <option value="">All Categories</option>
+                    </select>
+
+                    <!-- Date From -->
+                    <input type="date" id="dateFrom" class="filter-select" onchange="filterTransactions()">
+
+                    <!-- Date To -->
+                    <input type="date" id="dateTo" class="filter-select" onchange="filterTransactions()">
+
+                    <!-- Clear -->
+                    <button class="btn btn-secondary btn-sm" onclick="clearFilters()">Clear</button>
+
+                </div>
+            </div>
+
+            <!-- SUMMARY ROW -->
+            <div class="trans-summary">
+                <div class="trans-summary-item">
+                    <span class="trans-summary-label">Total Income</span>
+                    <span class="trans-summary-value text-green" id="filterIncome">₹ 0</span>
+                </div>
+                <div class="trans-summary-item">
+                    <span class="trans-summary-label">Total Expense</span>
+                    <span class="trans-summary-value text-red" id="filterExpense">₹ 0</span>
+                </div>
+                <div class="trans-summary-item">
+                    <span class="trans-summary-label">Net Balance</span>
+                    <span class="trans-summary-value" id="filterBalance">₹ 0</span>
+                </div>
+                <div class="trans-summary-item">
+                    <span class="trans-summary-label">Transactions</span>
+                    <span class="trans-summary-value" id="filterCount">0</span>
+                </div>
+            </div>
+
+            <!-- TABLE -->
+            <div class="card">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Category</th>
+                                <th>Account</th>
+                                <th>Type</th>
+                                <th>Note</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionsList">
+                            <tr>
+                                <td colspan="6">
+                                    <div class="empty-state"><p>Loading...</p></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-items">
+            <a href="/pages/dashboard.html" class="bottom-nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                Home
+            </a>
+            <a href="/pages/transactions.html" class="bottom-nav-item active">
+                <i data-lucide="list"></i>
+                Transactions
+            </a>
+            <a href="/pages/add-income.html" class="bottom-nav-item">
+                <i data-lucide="plus-circle"></i>
+                Add
+            </a>
+            <a href="/pages/reports.html" class="bottom-nav-item">
+                <i data-lucide="bar-chart-2"></i>
+                Reports
+            </a>
+            <a href="/pages/profile.html" class="bottom-nav-item">
+                <i data-lucide="user"></i>
+                Profile
+            </a>
+        </div>
+    </nav>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="/js/supabase.js"></script>
+    <script src="/js/theme.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/sidebar.js"></script>
+    <script src="/js/transactions.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
